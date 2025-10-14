@@ -409,7 +409,7 @@ def gen_one_addon_index(readme_filename):
     index_filename = os.path.join(index_dir, "index.html")
     if os.path.exists(index_filename):
         with open(index_filename, "rb") as f:
-            if b"oca-gen-addon-readme" not in f.read():
+            if b"itbr-gen-addon-readme" not in f.read():
                 # index was created manually
                 return
     if not os.path.isdir(index_dir):

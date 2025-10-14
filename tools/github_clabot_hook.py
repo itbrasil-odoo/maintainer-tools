@@ -1,7 +1,7 @@
 import logging
 import sys
 
-from . import github_login
+from . import itbr_github_login
 from .config import read_config
 
 _logger = logging.getLogger("clabot-hook")
@@ -15,7 +15,7 @@ class ClabotHookSetter(object):
     def __init__(self):
         config = read_config()
         self.gh_token = config.get("GitHub", "token")
-        self.gh = github_login.login()
+        self.gh = itbr_github_login.login()
         self.gh_org = "OCA"
         self.clabot_secret = config.get("Clabot", "secret")
         if not self.clabot_secret:

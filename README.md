@@ -1,7 +1,7 @@
 [![CI](https://github.com/OCA/maintainer-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/OCA/maintainer-tools/actions/workflows/ci.yml)
 [![Coverage Status](https://img.shields.io/coveralls/OCA/maintainer-tools.svg)](https://coveralls.io/r/OCA/maintainer-tools?branch=master)
 
-# OCA Maintainers Tools
+# IT Brasil Maintainers Tools
 
 ## Installation
 
@@ -17,7 +17,7 @@ Alternatively, you can install directly from PyPI:
 
 Or if using pipx:
 
-    $ pipx install oca-maintainers-tools@git+https://github.com/OCA/maintainer-tools.git
+        $ oca-maintainers-tools@git+https://github.com/itbrasil-odoo/maintainer-tools.git
 
 ## OCA repositories tools
 
@@ -32,7 +32,7 @@ Github authentication uses a token, that must be previously created on Github, a
 
 Set and store the token to be used for Github auth using:
 
-    $ oca-github-login
+    $ itbr-github-login
 
 Alternatively, the token can be set on the GITHUB_TOKEN environment variable.
 
@@ -57,11 +57,11 @@ Prerequisites:
 
 Run the script in "dry-run" mode:
 
-    $ oca-copy-maintainers --dry-run
+    $ itbr-copy-maintainers --dry-run
 
 Apply the changes on GitHub:
 
-    $ oca-copy-maintainers
+    $ itbr-copy-maintainers
 
 The first time it runs, it will ask your odoo's username and password.
 You may store them using the `--store` option, but watch out: the password is stored in clear text.
@@ -72,14 +72,14 @@ You may store them using the `--store` option, but watch out: the password is st
 Set standardized labels to ease the issue workflow on all repositories with same colors.
 This tools will also warn you what are the specific labels on some repository
 
-    $ oca-set-repo-labels
+    $ itbr-set-repo-labels
 
 
 ### Clone all OCA repositories
 
-The script `oca-clone-everything` can be used to clone all the OCA projects:
-create a fresh directory, use oca-github-login (or copy oca.cfg from a place
-where you've already logged in) and run oca-clone-everything.
+The script `itbr-clone-everything` can be used to clone all the OCA projects:
+create a fresh directory, use itbr-github-login (or copy oca.cfg from a place
+where you've already logged in) and run itbr-clone-everything.
 
 The script will create a clone for all the OCA projects registered on
 github. For projects already cloned, it run `git fetch --all` to get the
@@ -89,7 +89,7 @@ If you pass the `--organization-remotes
 <comma-separated-list>` option, the script will also add remotes for the listed
 accounts, and run `git fetch` to get the source code from these forks. For instance:
 
-    $ oca-clone-everything --organization-remotes yourlogin,otherlogin
+    $ itbr-clone-everything --organization-remotes yourlogin,otherlogin
 
 will create two remotes, in addition to the default `origin`, called
 `yourlogin` and `otherlogin`, respectively referencing
@@ -116,7 +116,7 @@ They must be put inside a `readme` folder respecting [this structure](./template
 eg.
 To generate the final README for the module `auth_keycloak`:
 
-    $ oca-gen-addon-readme --repo-name=server-auth --branch=10.0 --addon-dir=auth_keycloak
+    $ itbr-gen-addon-readme --repo-name=server-auth --branch=10.0 --addon-dir=auth_keycloak
 
 The result will be a fully PyPI compliant README.rst in the root of your module.
 
@@ -131,7 +131,7 @@ small wrapper around [towncrier](https://pypi.org/project/towncrier/).
 For example, this will update HISTORY.rst for `mis_builder` and `mis_builder_budget`
 with the version found in their manifest:
 
-    $ oca-towncrier --repo=mis-builder --addon-dir=mis_builder --addon-dir=mis_builder_budget --commit
+    $ itbr-towncrier --repo=mis-builder --addon-dir=mis_builder --addon-dir=mis_builder_budget --commit
 
 
 ### Icon generator
@@ -140,11 +140,11 @@ To provide an icon for our modules we generate them automatically.
 
 To generate the icon for the module `auth_keycloak`:
 
-    $ oca-gen-addon-icon --addon-dir=auth_keycloak
+    $ itbr-gen-addon-icon --addon-dir=auth_keycloak
 
 A custom icon can be added using the `--src-icon` argument:
 
-    $ oca-gen-addon-icon --addon-dir=auth_keycloak --src-icon=/path/to/custom/icon.png
+    $ itbr-gen-addon-icon --addon-dir=auth_keycloak --src-icon=/path/to/custom/icon.png
 
 
 ## Developers
@@ -166,15 +166,15 @@ package in your system.
 
 **Set the client token to use for Github* authentication*
 
-    $ python -m tools.github_login
+    $ python -m tools.itbr_github_login
 
 **Run a script**
 
-    $ python -m tools.copy_maintainers
+    $ python -m tools.itbr_copy_maintainers
 
 You can use the `GITHUB_TOKEN` environment variable to specify the token
 
-    $ GITHUB_TOKEN=xxx python -m tools.copy_maintainers
+    $ GITHUB_TOKEN=xxx python -m tools.itbr_copy_maintainers
 
 ## Integration with `pre-commit`
 
@@ -187,7 +187,7 @@ repos:
     rev: master # This is just an example; you must use a tag/commit instead!
     hooks:
       # Use each script's `--help` to understand the args
-      - id: oca-gen-addon-readme
+      - id: itbr-gen-addon-readme
         args:
           - --addons-dir=.
           - --org-name=OCA
@@ -197,10 +197,10 @@ repos:
       # This job could easily produce conflicts when it runs on every commit,
       # so it's added as a manual job. If you automate it, beware.
       # See https://pre-commit.com/#confining-hooks-to-run-at-certain-stages
-      - id: oca-gen-addons-table
+      - id: itbr-gen-addons-table
         stages: [manual]
 
-      - id: oca-gen-addon-icon
+      - id: itbr-gen-addon-icon
         args:
           - --addons-dir=.
 ```

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # License AGPLv3 (https://www.gnu.org/licenses/agpl-3.0-standalone.html)
 """
-oca-copy-maintainers
+itbr-copy-maintainers
 
 Copy the users from the teams configured on community.odoo.com to the
 GitHub teams

@@ -78,7 +78,7 @@ def _prepare_config(addon_dir, org, repo):
     help=(
         "Generate readme/HISTORY.rst from towncrier newsfragments "
         "stored in readme/newfragments/. This script is meant to be run "
-        "before oca-gen-addon-readme. See https://pypi.org/project/towncrier/ "
+        "before itbr-gen-addon-readme. See https://pypi.org/project/towncrier/ "
         "for more information and the naming and format of newfragment files."
     )
 )

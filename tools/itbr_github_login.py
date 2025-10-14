@@ -33,7 +33,7 @@ def login():
     if not token:
         raise GitHubLoginError(
             "No token has been generated for this script. "
-            "Please run 'oca-github-login' or set the GITHUB_TOKEN "
+            "Please run 'itbr-github-login' or set the GITHUB_TOKEN "
             "environment variable."
         )
     return github3.login(token=token)

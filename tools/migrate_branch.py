@@ -93,7 +93,7 @@ import re
 
 from github3.exceptions import NotFoundError
 
-from . import github_login, oca_projects
+from . import itbr_github_login, oca_projects
 from .config import read_config
 
 MANIFESTS = ("__openerp__.py", "__manifest__.py")
@@ -105,7 +105,7 @@ class BranchMigrator(object):
         config = read_config()
         self.gh_token = config.get("GitHub", "token")
         # Connect to GitHub
-        self.github = github_login.login()
+        self.github = itbr_github_login.login()
         gh_user = self.github.me()
         if not gh_user.email and not email:
             raise Exception(
