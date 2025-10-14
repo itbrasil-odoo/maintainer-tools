@@ -16,7 +16,7 @@ For using this utility, you need to install these dependencies:
 Configuration
 =============
 
-You must have a file called oca.cfg on the same folder of the script for
+You must have a file called itbr.cfg on the same folder of the script for
 storing credentials parameters. You can generate an skeleton config running
 this script for a first time.
 
@@ -86,7 +86,7 @@ import argparse
 
 import github3
 
-from . import itbr_github_login, oca_projects
+from . import itbr_github_login, itbr_projects
 from .config import read_config
 
 MANIFESTS = ("__openerp__.py", "__manifest__.py")
@@ -180,7 +180,7 @@ class MigrationIssuesCreator(object):
 
     def do_migration(self, projects=None):
         if not projects:
-            projects = oca_projects.get_repositories()
+            projects = itbr_projects.get_repositories()
         for project in sorted(projects):
             self._migrate_project(project)
 

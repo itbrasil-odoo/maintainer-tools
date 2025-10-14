@@ -6,7 +6,7 @@ import configparser
 import os
 import re
 
-CREDENTIALS_FILE = "oca.cfg"
+CREDENTIALS_FILE = "itbr.cfg"
 
 
 def init_config():

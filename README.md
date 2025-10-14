@@ -1,11 +1,11 @@
-[![CI](https://github.com/OCA/maintainer-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/OCA/maintainer-tools/actions/workflows/ci.yml)
-[![Coverage Status](https://img.shields.io/coveralls/OCA/maintainer-tools.svg)](https://coveralls.io/r/OCA/maintainer-tools?branch=master)
+[![CI](https://github.com/itbrasil-odoo/maintainer-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/itbrasil-odoo/maintainer-tools/actions/workflows/ci.yml)
+[![Coverage Status](https://img.shields.io/coveralls/itbrasil-odoo/maintainer-tools.svg)](https://coveralls.io/r/itbrasil-odoo/maintainer-tools?branch=master)
 
 # IT Brasil Maintainers Tools
 
 ## Installation
 
-    $ git clone git@github.com:OCA/maintainer-tools.git
+    $ git clone git@github.com:itbrasil-odoo/maintainer-tools.git
     $ cd maintainer-tools
     $ virtualenv env
     $ . env/bin/activate
@@ -13,16 +13,16 @@
 
 Alternatively, you can install directly from PyPI:
 
-    $ pip install git+https://github.com/OCA/maintainer-tools 
+    $ pip install git+https://github.com/itbrasil-odoo/maintainer-tools 
 
 Or if using pipx:
 
         $ oca-maintainers-tools@git+https://github.com/itbrasil-odoo/maintainer-tools.git
 
-## OCA repositories tools
+## IT Brasil repositories tools
 
 These tools are mostly for maintenance purpose only.
-They are used by OCA maintainers to address common operations across all repos.
+They are used by IT Brasil maintainers to address common operations across all repos.
 
 **Prerequisite**
 
@@ -51,7 +51,7 @@ Prerequisites:
 * Your odoo user must have read access to the projects and users;
 * The partners on odoo must have their GitHub login set otherwise they won't
   be added in the GitHub teams;
-* Your GitHub user must have owners rights on the OCA organization to be
+* Your GitHub user must have owners rights on the IT Brasil organization to be
   able to add or remove members;
 * The odoo project must have the same name than the GitHub teams.
 
@@ -67,7 +67,7 @@ The first time it runs, it will ask your odoo's username and password.
 You may store them using the `--store` option, but watch out: the password is stored in clear text.
 
 
-### Set labels on OCA repository on GitHub
+### Set labels on IT Brasil repository on GitHub
 
 Set standardized labels to ease the issue workflow on all repositories with same colors.
 This tools will also warn you what are the specific labels on some repository
@@ -75,13 +75,13 @@ This tools will also warn you what are the specific labels on some repository
     $ itbr-set-repo-labels
 
 
-### Clone all OCA repositories
+### Clone all IT Brasil repositories
 
-The script `itbr-clone-everything` can be used to clone all the OCA projects:
-create a fresh directory, use itbr-github-login (or copy oca.cfg from a place
+The script `itbr-clone-everything` can be used to clone all the IT Brasil projects:
+create a fresh directory, use itbr-github-login (or copy itbr.cfg from a place
 where you've already logged in) and run itbr-clone-everything.
 
-The script will create a clone for all the OCA projects registered on
+The script will create a clone for all the IT Brasil projects registered on
 github. For projects already cloned, it run `git fetch --all` to get the
 latest versions.
 
@@ -95,7 +95,7 @@ will create two remotes, in addition to the default `origin`, called
 `yourlogin` and `otherlogin`, respectively referencing
 `git@github.com:yourlogin/projectname` and
 `git@github.com:otherlogin/projectname` and fetch these remotes, for all the
-OCA projects. It does not matter whether the forks exist on github or not, and
+IT Brasil projects. It does not matter whether the forks exist on github or not, and
 you can create them later.
 
 TIP to update branch in shell at once: `ls | xargs -I % git -C % pull origin branch_number`
@@ -104,7 +104,7 @@ TIP to update branch in shell at once: `ls | xargs -I % git -C % pull origin bra
 ## Quality tools
 
 These tools are meant to be used both by repo maintainers and contributors.
-You can leverage them to give more quality to your modules and to respect OCA guidelines.
+You can leverage them to give more quality to your modules and to respect IT Brasil guidelines.
 
 
 ### README generator
@@ -152,7 +152,7 @@ A custom icon can be added using the `--src-icon` argument:
 As a developer, you want to launch the scripts without installing the
 package in your system.
 
-    $ git clone git@github.com:OCA/maintainer-tools.git
+    $ git clone git@github.com:itbrasil-odoo/maintainer-tools.git
     $ cd maintainer-tools
     $ virtualenv env
     $ . env/bin/activate
@@ -183,14 +183,14 @@ In any addons repo, you can use these pre-commit hooks:
 ```yaml
 # .pre-commit-config.yaml file
 repos:
-  - repo: https://github.com/OCA/maintainer-tools
+  - repo: https://github.com/itbrasil-odoo/maintainer-tools
     rev: master # This is just an example; you must use a tag/commit instead!
     hooks:
       # Use each script's `--help` to understand the args
       - id: itbr-gen-addon-readme
         args:
           - --addons-dir=.
-          - --org-name=OCA
+          - --org-name=itbrasil-odoo
           - --repo-name=server-tools
           - --branch=13.0
 

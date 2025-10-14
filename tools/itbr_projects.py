@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # License AGPLv3 (https://www.gnu.org/licenses/agpl-3.0-standalone.html)
 """
-Data about OCA Projects, with a few helper functions.
+Data about IT Brasil Projects, with a few helper functions.
 
-OCA_REPOSITORY_NAMES: list of OCA repository names
+ITBR_REPOSITORY_NAMES: list of IT Brasil repository names
 
 """
 
@@ -20,14 +20,14 @@ import appdirs
 from .config import NOT_ADDONS, is_main_branch
 from .github_login import login
 
-ALL = ["OCA_REPOSITORY_NAMES", "url"]
+ALL = ["ITBR_REPOSITORY_NAMES", "url"]
 
 
 def get_repositories():
     gh = login()
     all_repos = [
         repo.name
-        for repo in gh.repositories_by("OCA")
+        for repo in gh.repositories_by("itbrasil-odoo")
         if repo.name not in NOT_ADDONS and not repo.archived
     ]
     return all_repos
@@ -35,7 +35,7 @@ def get_repositories():
 
 def get_repositories_and_branches(repos=(), branches=(), branch_filter=is_main_branch):
     gh = login()
-    for repo in gh.repositories_by("OCA"):
+    for repo in gh.repositories_by("itbrasil-odoo"):
         if repos and repo.name not in repos:
             continue
         if repo.name in NOT_ADDONS:
@@ -49,14 +49,14 @@ def get_repositories_and_branches(repos=(), branches=(), branch_filter=is_main_b
 
 
 try:
-    OCA_REPOSITORY_NAMES = get_repositories()
+    ITBR_REPOSITORY_NAMES = get_repositories()
 except Exception as exc:
     print(exc)
-    OCA_REPOSITORY_NAMES = []
+    ITBR_REPOSITORY_NAMES = []
 
-OCA_REPOSITORY_NAMES.sort()
+ITBR_REPOSITORY_NAMES.sort()
 
-_OCA_REPOSITORY_NAMES = set(OCA_REPOSITORY_NAMES)
+_ITBR_REPOSITORY_NAMES = set(ITBR_REPOSITORY_NAMES)
 
 _URL_MAPPINGS = {
     "git": "git@github.com:%s/%s.git",
@@ -65,8 +65,8 @@ _URL_MAPPINGS = {
 }
 
 
-def url(project_name, protocol="git", org_name="OCA"):
-    """get the URL for an OCA project repository"""
+def url(project_name, protocol="git", org_name="itbrasil-odoo"):
+    """get the URL for an IT Brasil project repository"""
     return _URL_MAPPINGS[protocol] % (org_name, project_name)
 
 
@@ -75,10 +75,10 @@ class BranchNotFoundError(RuntimeError):
 
 
 @contextmanager
-def temporary_clone(project_name, branch=None, protocol="git", org_name="OCA"):
+def temporary_clone(project_name, branch=None, protocol="git", org_name="itbrasil-odoo"):
     """context manager that clones a git branch and cd to it, with cache"""
     # init cache directory
-    cache_dir = appdirs.user_cache_dir("oca-mqt")
+    cache_dir = appdirs.user_cache_dir("itbr-mqt")
     repo_cache_dir = os.path.join(
         cache_dir, "github.com", org_name.lower(), project_name.lower()
     )

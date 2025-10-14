@@ -5,11 +5,11 @@ import argparse
 import os
 import subprocess
 
-from .oca_projects import OCA_REPOSITORY_NAMES, url
+from .itbr_projects import ITBR_REPOSITORY_NAMES, url
 
 
 def clone(organization_remotes=None, remove_old_repos=False, target_branch=False):
-    for project in OCA_REPOSITORY_NAMES:
+    for project in ITBR_REPOSITORY_NAMES:
         print("Cloning %s ..." % project)
         cmd = ["git", "clone", "--quiet", url(project), project]
         if target_branch:
@@ -39,7 +39,7 @@ def clone(organization_remotes=None, remove_old_repos=False, target_branch=False
         print("Removing old repositories")
         for d in os.listdir("."):
             if (
-                d not in OCA_REPOSITORY_NAMES
+                d not in ITBR_REPOSITORY_NAMES
                 and os.path.isdir(d)
                 and os.path.isdir(os.path.join(d, ".git"))
             ):

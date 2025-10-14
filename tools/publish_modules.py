@@ -32,7 +32,7 @@ The 'chromedriver' executable must be in your PATH.
 Configuration
 =============
 
-You can have a file called oca.cfg on the same folder of the script for
+You can have a file called itbr.cfg on the same folder of the script for
 storing credentials parameters. You can generate an skeleton config running
 this script for a first time.
 
@@ -72,7 +72,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 
 from .config import read_config
-from .oca_projects import get_repositories_and_branches, url
+from .itbr_projects import get_repositories_and_branches, url
 
 _logger = logging.getLogger(__name__)
 

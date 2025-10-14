@@ -78,7 +78,7 @@ def main(repo, oca_travis_github_token, travis_token):
     if repo:
         repos = [repo]
     else:
-        from .oca_projects import get_repositories
+        from .itbr_projects import get_repositories
 
         repos = get_repositories()
     travis = Travis(travis_token)

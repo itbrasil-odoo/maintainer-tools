@@ -1,5 +1,5 @@
 # Project specific
-oca.cfg
+itbr.cfg
 .pytest_cache/
 /.vscode
 
