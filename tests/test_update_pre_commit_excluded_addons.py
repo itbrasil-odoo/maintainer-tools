@@ -32,7 +32,7 @@ def test_update_pre_commit_excluded_addons(tmp_path):
     m1.write_text("{}")
     m2.write_text("{}")
     m3.write_text("{}")
-    subprocess.check_call(["oca-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
+    subprocess.check_call(["itbr-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
     assert pre_commit.read_text() == textwrap.dedent(
         """\
             exclude: |
@@ -46,7 +46,7 @@ def test_update_pre_commit_excluded_addons(tmp_path):
     )
     # addon1 installable and addon2 not installable
     m2.write_text("{'installable': False}")
-    subprocess.check_call(["oca-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
+    subprocess.check_call(["itbr-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
     assert pre_commit.read_text() == textwrap.dedent(
         """\
             exclude: |
@@ -61,7 +61,7 @@ def test_update_pre_commit_excluded_addons(tmp_path):
     )
     # addon1 installable and addon2, addon3 not installable
     m3.write_text("{'installable': False}")
-    subprocess.check_call(["oca-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
+    subprocess.check_call(["itbr-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
     assert pre_commit.read_text() == textwrap.dedent(
         """\
             exclude: |
@@ -97,7 +97,7 @@ def test_update_pre_commit_excluded_addons_subdir(tmp_path):
     m1 = addon1 / "__manifest__.py"
     # addon1 installable
     m1.write_text("{}")
-    subprocess.check_call(["oca-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
+    subprocess.check_call(["itbr-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
     assert pre_commit.read_text() == textwrap.dedent(
         """\
             exclude: |
@@ -112,7 +112,7 @@ def test_update_pre_commit_excluded_addons_subdir(tmp_path):
     # addon1 not installable
     m1.write_text("{'installable': False}")
     subprocess.check_call(
-        ["oca-update-pre-commit-excluded-addons", "--addons-dir", "odoo/addons"],
+        ["itbr-update-pre-commit-excluded-addons", "--addons-dir", "odoo/addons"],
         cwd=str(tmp_path),
     )
     assert pre_commit.read_text() == textwrap.dedent(
@@ -149,7 +149,7 @@ def test_update_coveragerc(tmp_path):
     m = addon / "__manifest__.py"
     # addoninstallable
     m.write_text("{}")
-    subprocess.check_call(["oca-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
+    subprocess.check_call(["itbr-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
     assert coveragerc.read_text() == textwrap.dedent(
         """\
           [resport]
@@ -163,7 +163,7 @@ def test_update_coveragerc(tmp_path):
     )
     # addon installable
     m.write_text("{'installable': False}")
-    subprocess.check_call(["oca-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
+    subprocess.check_call(["itbr-update-pre-commit-excluded-addons"], cwd=str(tmp_path))
     assert coveragerc.read_text() == textwrap.dedent(
         """\
           [resport]
