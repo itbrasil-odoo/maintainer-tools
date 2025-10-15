@@ -75,7 +75,9 @@ class BranchNotFoundError(RuntimeError):
 
 
 @contextmanager
-def temporary_clone(project_name, branch=None, protocol="git", org_name="itbrasil-odoo"):
+def temporary_clone(
+    project_name, branch=None, protocol="git", org_name="itbrasil-odoo"
+):
     """context manager that clones a git branch and cd to it, with cache"""
     # init cache directory
     cache_dir = appdirs.user_cache_dir("itbr-mqt")
