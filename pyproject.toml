@@ -71,6 +71,7 @@ itbr-update-pre-commit-excluded-addons = "tools.itbr_update_pre_commit_excluded_
 itbr-fix-manifest-website = "tools.itbr_fix_manifest_website:main"
 itbr-configure-travis= "tools.configure_travis:main"
 itbr-copier-update = "tools.copier_update:main"
+itbr-repo-manage = "tools.repo_manage:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["tools"]
