@@ -20,7 +20,7 @@ except ImportError:
 
 
 def load_yaml(file_path):
-    with open(file_path, 'r') as f:
+    with open(file_path, "r") as f:
         return yaml.safe_load(f)
 
 
@@ -30,25 +30,25 @@ def load_yaml(file_path):
 @click.option("--conf-dir", required=True, help="Configuration directory")
 def main(org, token, conf_dir):
     # Load global config
-    global_config = load_yaml(os.path.join(conf_dir, 'global.yml'))
-    org_name = global_config.get('org', org)
+    global_config = load_yaml(os.path.join(conf_dir, "global.yml"))
+    org = global_config.get("org", org)
 
     # Login to GitHub
-    gh = login()
+    login()
 
     # Load PSC configs
-    psc_dir = os.path.join(conf_dir, 'psc')
+    psc_dir = os.path.join(conf_dir, "psc")
     for psc_file in os.listdir(psc_dir):
-        if psc_file.endswith('.yml'):
+        if psc_file.endswith(".yml"):
             psc_config = load_yaml(os.path.join(psc_dir, psc_file))
             for team_name, team_data in psc_config.items():
                 print(f"Processing team: {team_name}")
                 # TODO: Create or update team
 
     # Load repo configs
-    repo_dir = os.path.join(conf_dir, 'repo')
+    repo_dir = os.path.join(conf_dir, "repo")
     for repo_file in os.listdir(repo_dir):
-        if repo_file.endswith('.yml'):
+        if repo_file.endswith(".yml"):
             repo_config = load_yaml(os.path.join(repo_dir, repo_file))
             for repo_name, repo_data in repo_config.items():
                 print(f"Processing repo: {repo_name}")
