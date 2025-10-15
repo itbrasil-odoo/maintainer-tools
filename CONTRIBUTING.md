@@ -1,3 +1,3 @@
-# OCA Guidelines
+# IT Brasil Guidelines
 
-This document has moved to https://odoo-community.org/page/contributing
+This document has moved to https://itbrasil-odoo.github.io/

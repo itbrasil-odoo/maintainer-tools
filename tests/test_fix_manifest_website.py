@@ -1,6 +1,6 @@
 from click.testing import CliRunner
 
-from tools.fix_manifest_website import main
+from tools.itbr_fix_manifest_website import main
 
 
 def test_fix_manifest_website(tmp_path):

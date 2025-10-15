@@ -3,17 +3,17 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "oca-maintainers-tools"
-description = "Set of tools to help managing Odoo Community projects"
+name = "itbr-maintainers-tools"
+description = "Set of tools to help managing IT Brasil Odoo projects"
 readme = "README.md"
 license = "AGPL-3.0-only"
-authors = [{name = "Odoo Community Association (OCA)"}]
+authors = [{name = "IT Brasil — Soluções Corporativas"}]
 dynamic = ["version"]
 dependencies = [
     "appdirs",
     "click",
     "docutils",
-    "pypandoc",  # for oca-gen-addon-readme to work with markdown fragments
+    "pypandoc",  # for itbr-gen-addon-readme to work with markdown fragments
     "ERPpeek",
     "freezegun",
     "github3.py>=1",
@@ -23,17 +23,17 @@ dependencies = [
     "polib",
     "pygments",
     "requests",
-    "toml>=0.10.0",  # for oca-towncrier
+    "toml>=0.10.0",  # for itbr-towncrier
     "tomli ; python_version < '3.11'",  # from 3.11 tomllib is in stdlib
-    "towncrier>=21.3; python_version < '3.8'",  # for oca-towncrier
-    # for oca-towncrier with MarkDow support
+    "towncrier>=21.3; python_version < '3.8'",  # for itbr-towncrier
+    # for itbr-towncrier with MarkDow support
     "towncrier>=23.11; python_version >= '3.8'",
     "selenium",
     "twine",
     "wheel",
     "pyproject_dependencies ; python_version>='3.7'",
-    "setuptools-odoo",  # for oca-gen-external-dependencies
-    "whool",  # for oca-gen-external-dependencies
+    "setuptools-odoo",  # for itbr-gen-external-dependencies
+    "whool",  # for itbr-gen-external-dependencies
 ]
 requires-python = ">=3.8"
 classifiers = [
@@ -47,30 +47,30 @@ classifiers = [
 ]
 
 [project.urls]
-homepage = "https://github.com/OCA/maintainer-tools"
-repository = "https://github.com/OCA/maintainer-tools"
+homepage = "https://github.com/itbrasil-odoo/maintainer-tools"
+repository = "https://github.com/itbrasil-odoo/maintainer-tools"
 
 [project.scripts]
-oca-github-login = "tools.github_login:main"
-oca-copy-maintainers = "tools.copy_maintainers:main"
-oca-clone-everything = "tools.clone_everything:main"
-oca-set-repo-labels = "tools.set_repo_labels:main"
-oca-odoo-login = "tools.odoo_login:main"
-oca-sync-users = "tools.oca_sync_users:main"
-oca-gen-addons-table = "tools.gen_addons_table:gen_addons_table"
-oca-migrate-branch = "tools.migrate_branch:main"
-oca-migrate-branch-empty = "tools.migrate_branch_empty:main"
-oca-publish-modules = "tools.publish_modules:main"
-oca-gen-addon-readme = "tools.gen_addon_readme:gen_addon_readme"
-oca-gen-addon-icon = "tools.gen_addon_icon:gen_addon_icon"
-oca-gen-external-dependencies = "tools.gen_external_dependencies:main"
-oca-gen-metapackage = "tools.gen_metapackage:main"
-oca-towncrier = "tools.oca_towncrier:oca_towncrier"
-oca-create-migration-issue = "tools.create_migration_issue:main"
-oca-update-pre-commit-excluded-addons = "tools.update_pre_commit_excluded_addons:main"
-oca-fix-manifest-website = "tools.fix_manifest_website:main"
-oca-configure-travis= "tools.configure_travis:main"
-oca-copier-update = "tools.copier_update:main"
+itbr-github-login = "tools.itbr_github_login:main"
+itbr-copy-maintainers = "tools.itbr_copy_maintainers:main"
+itbr-clone-everything = "tools.itbr_clone_everything:main"
+itbr-set-repo-labels = "tools.itbr_set_repo_labels:main"
+itbr-odoo-login = "tools.odoo_login:main"
+itbr-sync-users = "tools.oca_sync_users:main"
+itbr-gen-addons-table = "tools.itbr_gen_addons_table:gen_addons_table"
+itbr-migrate-branch = "tools.migrate_branch:main"
+itbr-migrate-branch-empty = "tools.migrate_branch_empty:main"
+itbr-publish-modules = "tools.publish_modules:main"
+itbr-gen-addon-readme = "tools.itbr_gen_addon_readme:gen_addon_readme"
+itbr-gen-addon-icon = "tools.itbr_gen_addon_icon:gen_addon_icon"
+itbr-gen-external-dependencies = "tools.itbr_gen_external_dependencies:main"
+itbr-gen-metapackage = "tools.itbr_gen_metapackage:main"
+itbr-towncrier = "tools.oca_towncrier:oca_towncrier"
+itbr-create-migration-issue = "tools.create_migration_issue:main"
+itbr-update-pre-commit-excluded-addons = "tools.itbr_update_pre_commit_excluded_addons:main"
+itbr-fix-manifest-website = "tools.itbr_fix_manifest_website:main"
+itbr-configure-travis= "tools.configure_travis:main"
+itbr-copier-update = "tools.copier_update:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["tools"]

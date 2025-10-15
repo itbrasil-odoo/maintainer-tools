@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from tools.gen_addon_readme import (
+from tools.itbr_gen_addon_readme import (
     _get_source_digest,
     get_fragment_format,
     get_fragments_format,

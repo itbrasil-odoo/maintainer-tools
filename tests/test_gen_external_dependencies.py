@@ -4,7 +4,7 @@ import textwrap
 
 import pytest
 
-from tools.gen_external_dependencies import main as gen_external_dependencies
+from tools.itbr_gen_external_dependencies import main as gen_external_dependencies
 
 from .utils import dir_changer
 

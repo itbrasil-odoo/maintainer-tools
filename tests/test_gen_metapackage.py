@@ -2,7 +2,7 @@ import textwrap
 
 from freezegun import freeze_time
 
-from tools.gen_metapackage import main as gen_metapackage
+from tools.itbr_gen_metapackage import main as gen_metapackage
 
 from .utils import dir_changer
 
