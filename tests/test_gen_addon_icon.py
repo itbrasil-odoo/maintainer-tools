@@ -17,7 +17,7 @@ def test_gen_addon_icon(tmp_path):
     cmd = [
         sys.executable,
         "-m",
-        "tools.gen_addon_icon",
+        "tools.itbr_gen_addon_icon",
         "--addon-dir",
         str(addon_dir),
     ]

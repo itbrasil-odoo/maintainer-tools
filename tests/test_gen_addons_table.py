@@ -23,7 +23,7 @@ def test_1():
             [
                 sys.executable,
                 "-m",
-                "tools.gen_addons_table",
+                "tools.itbr_gen_addons_table",
             ],
             cwd=cwd,
         )
@@ -39,6 +39,6 @@ def test_1():
 def test_absent_readme(tmp_path):
     """gen_addons_table must not fail if README.md is absent"""
     res = subprocess.call(
-        [sys.executable, "-m", "tools.gen_addons_table"], cwd=str(tmp_path)
+        [sys.executable, "-m", "tools.itbr_gen_addons_table"], cwd=str(tmp_path)
     )
     assert res == 0

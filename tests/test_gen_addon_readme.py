@@ -40,7 +40,7 @@ def test_gen_addon_readme_oca(addons_dir):
     cmd = [
         sys.executable,
         "-m",
-        "tools.gen_addon_readme",
+        "tools.itbr_gen_addon_readme",
         "--addons-dir",
         ".",
         "--repo-name",
@@ -56,7 +56,7 @@ def test_gen_addon_readme_if_fragments_changed(addons_dir):
     cmd = [
         sys.executable,
         "-m",
-        "tools.gen_addon_readme",
+        "tools.itbr_gen_addon_readme",
         "--addon-dir",
         "addon1",
         "--repo-name",
@@ -87,7 +87,7 @@ def test_gen_addon_readme_keep_source_digest(addons_dir):
     cmd = [
         sys.executable,
         "-m",
-        "tools.gen_addon_readme",
+        "tools.itbr_gen_addon_readme",
         "--addon-dir",
         "addon1",
         "--repo-name",
@@ -117,7 +117,7 @@ def test_gen_addon_readme_acme(addons_dir):
     cmd = [
         sys.executable,
         "-m",
-        "tools.gen_addon_readme",
+        "tools.itbr_gen_addon_readme",
         "--addons-dir",
         ".",
         "--repo-name",
@@ -147,7 +147,7 @@ def test_rst_error(tmp_path):
     cmd = [
         sys.executable,
         "-m",
-        "tools.gen_addon_readme",
+        "tools.itbr_gen_addon_readme",
         "--addon-dir",
         str(addon_dir),
         "--repo-name",
