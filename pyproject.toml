@@ -72,6 +72,7 @@ itbr-fix-manifest-website = "tools.itbr_fix_manifest_website:main"
 itbr-configure-travis= "tools.configure_travis:main"
 itbr-copier-update = "tools.copier_update:main"
 itbr-repo-manage = "tools.repo_manage:main"
+itbr-repo-pages = "tools.repo_pages:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["tools"]
