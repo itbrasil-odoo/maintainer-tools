@@ -11,14 +11,6 @@
     $ . env/bin/activate
     $ pip install -e .
 
-Alternatively, you can install directly from PyPI:
-
-    $ pip install git+https://github.com/itbrasil-odoo/maintainer-tools 
-
-Or if using pipx:
-
-        $ oca-maintainers-tools@git+https://github.com/itbrasil-odoo/maintainer-tools.git
-
 ## IT Brasil repositories tools
 
 These tools are mostly for maintenance purpose only.
