@@ -73,6 +73,7 @@ itbr-configure-travis= "tools.configure_travis:main"
 itbr-copier-update = "tools.copier_update:main"
 itbr-repo-manage = "tools.repo_manage:main"
 itbr-repo-pages = "tools.repo_pages:main"
+itbr-create-branch-from-previous = "tools.create_branch_from_previous:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["tools"]
