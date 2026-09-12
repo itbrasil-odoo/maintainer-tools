@@ -16,17 +16,24 @@ ICON_TYPE = "png"
 
 ICON_TYPES = ["png", "svg"]
 
+# Bundled inside the package so they are available once installed;
+# one subdirectory per lowercased organization name, plus "default".
+ORG_ICONS_DIR = os.path.join(os.path.dirname(__file__), "icons")
 
-def gen_one_addon_icon(icon_dir, src_icon=None, filetype=ICON_TYPE):
+
+def default_icon(org_name=None, filetype=ICON_TYPE):
+    icon_name = "icon.%s" % filetype
+    if org_name:
+        org_icon = os.path.join(ORG_ICONS_DIR, org_name.lower(), icon_name)
+        if os.path.exists(org_icon):
+            return org_icon
+    return os.path.join(ORG_ICONS_DIR, "default", icon_name)
+
+
+def gen_one_addon_icon(icon_dir, src_icon=None, filetype=ICON_TYPE, org_name=None):
     icon_filename = os.path.join(icon_dir, "icon.%s" % filetype)
     if not src_icon:
-        src_icon = os.path.join(
-            os.path.dirname(__file__).rpartition("tools")[0],
-            "template",
-            "module",
-            ICONS_DIR,
-            "icon.%s" % filetype,
-        )
+        src_icon = default_icon(org_name, filetype)
     if os.path.exists(src_icon):
         if not os.path.exists(icon_dir):
             os.makedirs(icon_dir)
@@ -53,11 +60,16 @@ def gen_one_addon_icon(icon_dir, src_icon=None, filetype=ICON_TYPE):
     "--src-icon",
     type=click.Path(dir_okay=False, file_okay=True, exists=True),
     help="Path to a custom icon.png file. If not set, it'll use the "
-    "OCA template icon.",
+    "bundled icon of --org-name.",
+)
+@click.option(
+    "--org-name",
+    help="Organization name, eg. Dedicata. Selects its bundled icon, "
+    "falling back to the IT Brasil one.",
 )
 @click.option("--commit/--no-commit", help="git commit icon, if not any.")
-def gen_addon_icon(addon_dirs, addons_dir, src_icon, commit):
-    """Put default OCA icon of type ICON_TYPE.
+def gen_addon_icon(addon_dirs, addons_dir, src_icon, org_name, commit):
+    """Put default organization icon of type ICON_TYPE.
 
     Do nothing if the icon already exists in ICONS_DIR, otherwise put
     the default icon.
@@ -86,7 +98,9 @@ def gen_addon_icon(addon_dirs, addons_dir, src_icon, commit):
                 break
         if exist:
             continue
-        icon_filename = gen_one_addon_icon(icon_dir, src_icon=src_icon)
+        icon_filename = gen_one_addon_icon(
+            icon_dir, src_icon=src_icon, org_name=org_name
+        )
         if icon_filename:
             icon_filenames.append(icon_filename)
     if icon_filenames and commit:

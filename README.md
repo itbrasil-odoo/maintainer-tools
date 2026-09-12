@@ -134,6 +134,11 @@ To generate the icon for the module `auth_keycloak`:
 
     $ itbr-gen-addon-icon --addon-dir=auth_keycloak
 
+It uses the IT Brasil icon by default. Organizations with a bundled icon in
+`tools/icons/<organization>` (e.g. Dedicata) get their own with `--org-name`:
+
+    $ itbr-gen-addon-icon --addon-dir=auth_keycloak --org-name=Dedicata
+
 A custom icon can be added using the `--src-icon` argument:
 
     $ itbr-gen-addon-icon --addon-dir=auth_keycloak --src-icon=/path/to/custom/icon.png
